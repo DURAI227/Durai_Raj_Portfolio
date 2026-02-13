@@ -65,3 +65,5 @@ Simply open VScode and click on Share -> Publish.
 Yes, you can!
 
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+https://durai-raj-portfolio.vercel.app/
