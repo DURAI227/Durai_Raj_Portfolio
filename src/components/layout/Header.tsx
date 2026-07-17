@@ -33,6 +33,51 @@ export function Header() {
   const navigate = useNavigate();
   const { isScrolled } = useScrollPosition();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('home');
+
+  useEffect(() => {
+    if (location.pathname !== '/') return;
+
+    const sectionIds = ['home', 'skills', 'projects', 'contact'];
+
+    const handleScroll = () => {
+      // Check if scrolled to bottom
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
+        setActiveSection('contact');
+        return;
+      }
+
+      // Check if scrolled to top
+      if (window.scrollY < 100) {
+        setActiveSection('home');
+        return;
+      }
+
+      const triggerPoint = 160; // header height + some buffer
+      let found = false;
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= triggerPoint && rect.bottom > triggerPoint) {
+            setActiveSection(id);
+            found = true;
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    const timeoutId = setTimeout(handleScroll, 100);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timeoutId);
+    };
+  }, [location.pathname]);
 
   const isTransparent = location.pathname === '/' && !isScrolled;
 
@@ -121,11 +166,22 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link, index) => {
-              const isActive = link.path === '/'
-                ? location.pathname === '/' && !location.hash
-                : link.isHash
-                  ? location.pathname + location.hash === link.path
-                  : location.pathname === link.path;
+              const isActive = (() => {
+                if (location.pathname === '/') {
+                  if (link.path === '/') return activeSection === 'home';
+                  if (link.isHash) {
+                    return activeSection === link.path.split('#')[1];
+                  }
+                  if (link.path === '/portfolio') return activeSection === 'projects';
+                  if (link.path === '/contact') return activeSection === 'contact';
+                  return false;
+                }
+                
+                // Fallback for non-homepage paths
+                if (link.path === '/') return false;
+                if (link.isHash) return false;
+                return location.pathname === link.path || (link.path === '/portfolio' && location.pathname.startsWith('/project/'));
+              })();
 
               return (
                 <motion.div
@@ -243,11 +299,22 @@ export function Header() {
                 <div className="flex flex-col h-full">
                   <nav className="flex flex-col gap-6 mt-8">
                     {navLinks.map((link) => {
-                      const isActive = link.path === '/'
-                        ? location.pathname === '/' && !location.hash
-                        : link.isHash
-                          ? location.pathname + location.hash === link.path
-                          : location.pathname === link.path;
+                      const isActive = (() => {
+                        if (location.pathname === '/') {
+                          if (link.path === '/') return activeSection === 'home';
+                          if (link.isHash) {
+                            return activeSection === link.path.split('#')[1];
+                          }
+                          if (link.path === '/portfolio') return activeSection === 'projects';
+                          if (link.path === '/contact') return activeSection === 'contact';
+                          return false;
+                        }
+                        
+                        // Fallback for non-homepage paths
+                        if (link.path === '/') return false;
+                        if (link.isHash) return false;
+                        return location.pathname === link.path || (link.path === '/portfolio' && location.pathname.startsWith('/project/'));
+                      })();
 
                       return link.isExternal ? (
                         <a

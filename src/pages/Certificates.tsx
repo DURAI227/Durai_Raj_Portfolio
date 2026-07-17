@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Award, Calendar, ExternalLink, X } from 'lucide-react';
 import { developerInfo } from '@/data/developer';
 import pythonCert from '@/assets/certificates/python-cert.png';
-import javaCert from '@/assets/certificates/java-full-stack-cert.jpeg';
 
 interface Certificate {
   id: string;
@@ -48,14 +47,6 @@ const certificates: Certificate[] = [
     date: '2022',
     credentialUrl: '#',
     image: pythonCert,
-  },
-  {
-    id: '5',
-    title: 'Java Full Stack Development',
-    issuer: 'Professional Certification',
-    date: '2025',
-    credentialUrl: '#',
-    image: javaCert,
   },
 ];
 

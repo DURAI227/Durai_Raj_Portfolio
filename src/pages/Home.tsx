@@ -32,7 +32,7 @@ export default function Home() {
         <SkillsSection />
 
         {/* Projects Section */}
-        <section className="py-24 md:py-32 px-6 relative overflow-hidden">
+        <section id="projects" className="py-24 md:py-32 px-6 relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-tertiary/5 rounded-full blur-3xl pointer-events-none" />
           

@@ -3,7 +3,7 @@ import { SEOHead } from '@/components/seo/SEOHead';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { GraduationCap, MapPin, Calendar, Target, Code, Cpu, Settings, Sparkles, FileText } from 'lucide-react';
+import { GraduationCap, MapPin, Calendar, Target, Code, Cpu, Settings, Sparkles, FileText, Briefcase } from 'lucide-react';
 import profilePhoto from '@/assets/profile-new.jpg';
 
 const highlights = [
@@ -206,6 +206,57 @@ export default function About() {
             </div>
           </div>
         </section>
+
+        {/* Experience Section */}
+        {developerInfo.experience && developerInfo.experience.length > 0 && (
+          <section className="py-16 px-6 relative overflow-hidden">
+            <div className="max-w-6xl mx-auto relative z-10">
+              <ScrollReveal>
+                <div className="text-center space-y-4 mb-16">
+                  <h2 className="text-4xl md:text-5xl font-bold">
+                    <span className="text-gradient-primary">Internship Experience</span>
+                  </h2>
+                </div>
+              </ScrollReveal>
+
+              <div className="space-y-8 max-w-4xl mx-auto">
+                {developerInfo.experience.map((exp, index) => (
+                  <ScrollReveal key={index} delay={index * 0.1}>
+                    <motion.div
+                      className="group relative p-8 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 transition-all duration-300"
+                      whileHover={{ y: -2 }}
+                    >
+                      <div className="absolute inset-0 rounded-2xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
+                      
+                      <div className="relative z-10 flex flex-col md:flex-row md:items-start justify-between gap-4">
+                        <div className="space-y-3 flex-1">
+                          <div className="flex items-center gap-3">
+                            <div className="p-2 rounded-lg bg-primary/10">
+                              <Briefcase className="size-5 text-primary" />
+                            </div>
+                            <div>
+                              <h3 className="text-xl font-bold text-foreground">{exp.role}</h3>
+                              <p className="text-lg font-medium text-secondary">{exp.company}</p>
+                            </div>
+                          </div>
+                          <ul className="space-y-2 text-muted-foreground list-disc list-inside pl-1">
+                            {exp.description.map((bullet, idx) => (
+                              <li key={idx} className="text-sm leading-relaxed">{bullet}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="flex items-center gap-1 text-sm text-muted-foreground bg-secondary/5 px-3 py-1.5 rounded-full border border-border/30 self-start md:self-auto">
+                          <Calendar className="size-4" />
+                          <span>{exp.duration}</span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </ScrollReveal>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Cards */}
         <section className="py-16 px-6">

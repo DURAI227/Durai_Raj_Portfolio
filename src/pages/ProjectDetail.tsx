@@ -97,13 +97,18 @@ export default function ProjectDetail() {
 
                 {/* Action buttons */}
                 <div className="flex flex-wrap gap-4 pt-4">
-                  <Button
-                    size="lg"
-                    className="bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium shadow-glow-primary"
-                  >
-                    <ExternalLink className="size-4 mr-2" />
-                    View Live Demo
-                  </Button>
+                  {project.demoUrl && (
+                    <Button
+                      size="lg"
+                      className="bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium shadow-glow-primary"
+                      asChild
+                    >
+                      <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="size-4 mr-2" />
+                        View Live Demo
+                      </a>
+                    </Button>
+                  )}
                   {project.sourceCode && (
                     <Button
                       size="lg"

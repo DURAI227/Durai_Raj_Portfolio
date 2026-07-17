@@ -2,6 +2,13 @@
  * Developer portfolio data based on Durai Raj S resume
  */
 
+export interface Experience {
+  role: string;
+  company: string;
+  duration: string;
+  description: string[];
+}
+
 export interface DeveloperInfo {
   name: string;
   title: string;
@@ -20,6 +27,7 @@ export interface DeveloperInfo {
     duration: string;
     grade?: string;
   }[];
+  experience?: Experience[];
 }
 
 export interface Project {
@@ -35,6 +43,7 @@ export interface Project {
   coverImage: string;
   year: string;
   sourceCode?: string;
+  demoUrl?: string;
 }
 
 export interface Skill {
@@ -45,25 +54,24 @@ export interface Skill {
 }
 
 export const developerInfo: DeveloperInfo = {
-  name: 'Durai Raj S',
-  title: 'Full-Stack Developer | AI & ML Learning | DevOps Engineer',
-  tagline: 'Building scalable solutions with modern technologies',
-  heroIntroduction: 'Passionate about building innovative web applications and AI solutions that solve real-world problems. Specializing in full-stack development, DevOps, and integrating AI/ML for smarter user experiences.',
-  biography: `I am a Computer Science Engineering graduate with a strong interest in Artificial Intelligence, Python development, and DevOps technologies. I enjoy solving real-world problems using technology and continuously improving my skills through hands-on projects and learning.
+  name: 'Durai Raj',
+  title: 'Full-Stack Developer | AI & ML Practitioner | DevOps Enthusiast',
+  tagline: 'Developing efficient, scalable, and intelligent software solutions',
+  heroIntroduction: 'Passionate about building innovative web applications and AI solutions that solve real-world problems. Specializing in python development, machine learning, and frontend technologies.',
+  biography: `I am a motivated computer science student with a strong foundation in programming languages including Python, C, C++, SQL, and web technologies such as HTML, CSS, and JavaScript. I am passionate about developing efficient and scalable solutions while continuously enhancing my technical skills.
 
-I have experience working with Python, C, C++, SQL, and foundational DevOps tools, and I am currently focused on building practical, impactful projects—especially in AI-based applications. I am motivated, detail-oriented, and eager to contribute to innovative teams while growing as a software professional.`,
+Along with my technical expertise, I possess strong leadership, time management, and problem-solving abilities, which help me work effectively both independently and in team environments. I am eager to apply my knowledge to real-world projects, contribute to innovative solutions, and grow as a professional in the field of software development.`,
   email: 'durai227raj@gmail.com',
   phone: '9965066638',
   location: 'Thirukovilur, Kallakurichi, Tamil Nadu',
   linkedIn: 'https://linkedin.com/in/durairaj06',
   github: 'https://github.com/DURAI227',
-  resumeUrl: '/durai_resume.pdf',
+  resumeUrl: '/durai_raj_resume.pdf',
   education: [
     {
       degree: 'Bachelor of Engineering in Computer Science',
-      institution: 'I.F.E.T COLLEGE OF ENGINEERING VILLUPURAM, TAMIL NADU',
+      institution: 'I.F.E.T COLLEGE OF ENGINEERING, VILLUPURAM, TAMIL NADU',
       duration: '2022 - 2026',
-
     },
     {
       degree: 'HSC',
@@ -72,8 +80,30 @@ I have experience working with Python, C, C++, SQL, and foundational DevOps tool
     },
     {
       degree: 'SSC',
-      institution: 'SRI VIDYA MANDIR SENIOR SECONDARY SCHOOL,THIRUKOILURE',
+      institution: 'SRI VIDYA MANDIR SENIOR SECONDARY SCHOOL IN THIRUKOILURE',
       duration: '2019 - 2020'
+    }
+  ],
+  experience: [
+    {
+      role: 'AI & ML Intern',
+      company: 'SUV INTERNATIONAL',
+      duration: 'Jan 20, 2025 - Feb 10, 2025',
+      description: [
+        'Worked on AI and Machine Learning projects, focusing on data analysis, model development, and evaluation.',
+        'Collected, cleaned, and processed structured and unstructured datasets for training and testing models.',
+        'Implemented automation workflows to improve model training and testing efficiency.'
+      ]
+    },
+    {
+      role: 'Frontend Web Development Intern',
+      company: 'SIMPLZONE',
+      duration: 'Jun 20, 2024 - Jun 30, 2024',
+      description: [
+        'Developed and maintained responsive web interfaces using HTML, CSS, and JavaScript.',
+        'Collaborated with designers and backend developers to implement user-friendly and visually appealing UI components.',
+        'Optimized website performance, accessibility, and cross-browser compatibility.'
+      ]
     }
   ]
 };
@@ -81,6 +111,42 @@ I have experience working with Python, C, C++, SQL, and foundational DevOps tool
 export const projects: Project[] = [
   {
     id: '1',
+    title: 'AI-Powered Evaluation of Myofascial Sling Exercises Effects on Human Lumbar Pain, Flexibility, and Balance',
+    slug: 'ai-myofascial-sling-analysis',
+    description: 'Developed an AI-powered web application using Python and YOLOv8-Pose to analyze myofascial sling exercises through real-time human pose estimation.',
+    longDescription: 'An AI-powered digital physiotherapy and rehabilitation platform designed to assess, track, and improve posture, balance, and lumbar flexibility using Myofascial Sling Exercises. Using a standard webcam, YOLOv8-Pose skeletal estimation, and Streamlit, it provides real-time joint-angle measurements, posture feedback, and Center of Gravity (CoG) stability calculations. The system features guided corrective exercises, user progress logs, and posture analysis metrics.',
+    techStack: ['Python', 'XGBoost', 'Streamlit', 'YOLOv8', 'OpenCV'],
+    features: [
+      'Developed an AI-powered web application using Python and YOLOv8-Pose to analyze myofascial sling exercises through real-time human pose estimation.',
+      'Implemented posture analysis by detecting body keypoints and calculating joint angles, Range of Motion (ROM), and balance metrics from webcam video.',
+      'Built a real-time feedback system that evaluates exercise performance and provides posture correction with progress tracking.',
+      'Designed a low-cost, vision-based rehabilitation solution for improving lumbar flexibility, balance, and posture without requiring wearable sensors.'
+    ],
+    category: 'ai',
+    coverImage: '/myofascial-cover.jpg',
+    year: '2026',
+    sourceCode: 'https://github.com/DURAI227/AI-Enabled-Analysis-of-Myofascial-Sling-Exercises-Web.git'
+  },
+  {
+    id: '2',
+    title: 'Accident Detection System',
+    slug: 'accident-detection',
+    description: 'Developed an AI-powered accident detection system using Python and machine learning to analyze vehicle motion in real time.',
+    longDescription: 'An AI-powered accident detection system designed to monitor, identify, and alert on traffic accidents in real-time. By utilizing Python and machine learning models, the system processes vehicle motion patterns and camera feeds to automatically trigger emergency alerts, improving emergency response times by 30%.',
+    techStack: ['Python', 'Machine Learning', 'Artificial Intelligence', 'OpenCV'],
+    features: [
+      'Developed an AI-powered accident detection system using Python and machine learning to analyze vehicle motion in real time.',
+      'Implemented real-time monitoring algorithms to detect road accidents and automatically trigger emergency alerts.',
+      'Improved emergency response times by 30% by sending instant notifications to responders and vehicle owners.',
+      'Utilized data preprocessing, feature extraction, and predictive modeling to ensure accurate accident detection.'
+    ],
+    category: 'ai',
+    coverImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop&q=60',
+    year: '2024',
+    sourceCode: 'https://github.com/DURAI227'
+  },
+  {
+    id: '3',
     title: 'Quantum96',
     slug: 'quantum96',
     description: 'Smart Investment Tracker with AI-driven forecasting',
@@ -99,27 +165,7 @@ export const projects: Project[] = [
     sourceCode: 'https://github.com/DURAI227'
   },
   {
-    id: '2',
-    title: 'Accident Detection System',
-    slug: 'accident-detection',
-    description: 'Real-time AI-based accident detection for emergency response',
-    longDescription: 'An AI-powered system designed to detect accidents in real-time using computer vision and machine learning. The system can identify accident scenarios and immediately alert emergency services, potentially saving lives by reducing response times by up to 30%.',
-    techStack: ['Python', 'TensorFlow', 'Machine Learning', 'OpenCV'],
-    features: [
-      'Real-time video analysis for accident detection',
-      'Automatic emergency service notification',
-      'GPS-based location tracking',
-      'Multi-camera support for wider coverage',
-      'Low latency detection under 2 seconds'
-    ],
-    impact: 'Go Project',
-    category: 'ai',
-    coverImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop&q=60',
-    year: '2024',
-    sourceCode: 'https://github.com/DURAI227'
-  },
-  {
-    id: '3',
+    id: '4',
     title: 'Scientific Calculator',
     slug: 'scientific-calculator',
     description: 'Advanced calculator with scientific functions and mathematical operations',
@@ -139,7 +185,7 @@ export const projects: Project[] = [
     sourceCode: 'https://github.com/DURAI227/scientific-calculator.git'
   },
   {
-    id: '4',
+    id: '5',
     title: 'Chess Tic-Tac-Toe',
     slug: 'chess-tic-tac-toe',
     description: 'A hybrid game combining chess strategy with tic-tac-toe gameplay',
@@ -162,24 +208,23 @@ export const projects: Project[] = [
 
 export const skills: Skill[] = [
   // Technical Skills
-  { name: 'C', category: 'technical', level: 75, color: 'skill-python' },
-  { name: 'Python', category: 'technical', level: 85, color: 'skill-python' },
-  { name: 'Java', category: 'technical', level: 70, color: 'skill-java' },
-  { name: 'Html/Css/Js', category: 'technical', level: 80, color: 'skill-web' },
-  { name: 'Artificial Intelligence', category: 'technical', level: 75, color: 'skill-web' },
-  { name: 'Machine Learning', category: 'technical', level: 70, color: 'skill-ml' },
+  { name: 'Python', category: 'technical', level: 90, color: 'skill-python' },
+  { name: 'C', category: 'technical', level: 80, color: 'skill-python' },
+  { name: 'C++', category: 'technical', level: 80, color: 'skill-python' },
+  { name: 'Java', category: 'technical', level: 75, color: 'skill-python' },
+  { name: 'MySQL', category: 'technical', level: 80, color: 'skill-ml' },
+  { name: 'HTML, CSS, JS', category: 'technical', level: 85, color: 'skill-web' },
+  { name: 'Artificial Intelligence', category: 'technical', level: 75, color: 'skill-ml' },
+  { name: 'Machine Learning', category: 'technical', level: 75, color: 'skill-ml' },
 
   // Soft Skills
-  { name: 'Management', category: 'soft' },
-  { name: 'Creativity', category: 'soft' },
-  { name: 'Time Management', category: 'soft' },
   { name: 'Leadership', category: 'soft' },
+  { name: 'Time Management', category: 'soft' },
   { name: 'Problem Solving', category: 'soft' },
-  { name: 'Team Collaboration', category: 'soft' },
 
   // Languages
-  { name: 'Tamil', category: 'language' },
-  { name: 'English', category: 'language' }
+  { name: 'English', category: 'language' },
+  { name: 'Tamil', category: 'language' }
 ];
 
 export const getProjectBySlug = (slug: string): Project | undefined => {

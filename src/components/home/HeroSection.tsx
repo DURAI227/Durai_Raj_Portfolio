@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
  */
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
       {/* Animated background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Floating gradient orbs */}
